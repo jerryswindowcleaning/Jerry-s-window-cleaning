@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cleaner Window Cleaning — San Diego | $110/hour, Free Estimates</title>
+<meta name="description" content="Cleaner Window Cleaning serves all of San Diego County. $110/hour, estimates 100% free, 9am-5pm, 7 days a week. Call 217-552-8626. Play the window cleaning game and earn a discount.">
+<style>
+  :root{--blue:#0b3d91;--bright:#1565d8;--teal:#0f5f5f;--yellow:#ffe600;--ink:#12202e;--paper:#f4f7fb;--card:#ffffff}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;line-height:1.5}
+  a{color:var(--bright)}
+  button{font:inherit;cursor:pointer}
+  /* Crisp title bar — inspired by the mockup, rendered sharp, not as a pixelated screenshot */
+  .titlebar{background:linear-gradient(180deg,#1a4fb5,#0b3d91);color:#fff;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;font-weight:700;letter-spacing:.2px}
+  .titlebar small{font-weight:500;opacity:.9}
+  .addressbar{background:#e8edf3;border-bottom:1px solid #cbd5e1;padding:8px 16px;font-size:14px;color:#334155;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .addressbar b{background:#fff;border:1px solid #cbd5e1;padding:3px 8px;border-radius:6px}
+  .wrap{max-width:1140px;margin:0 auto;padding:20px 16px 48px}
+  .hero{display:grid;grid-template-columns:210px 1fr;gap:18px;align-items:start}
+  @media(max-width:760px){.hero{grid-template-columns:1fr}}
+  .nav{background:var(--teal);border-radius:14px;padding:14px;box-shadow:0 8px 24px rgba(0,0,0,.15)}
+  .nav button{display:flex;gap:10px;align-items:center;width:100%;text-align:left;background:transparent;border:1px solid transparent;color:#fff;padding:10px 10px;border-radius:10px;font-weight:600}
+  .nav button:hover,.nav button:focus-visible{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.4);outline:none}
+  .nav button span{font-size:20px}
+  .card{background:var(--card);border-radius:16px;box-shadow:0 8px 28px rgba(15,40,70,.12);padding:22px}
+  h1{margin:0;line-height:.95;letter-spacing:-1px}
+  h1 .cleaner{color:var(--bright);font-size:clamp(44px,8vw,84px);font-weight:900;text-shadow:0 2px 0 #fff,0 6px 18px rgba(21,101,216,.25)}
+  h1 .wc{font-size:clamp(28px,5vw,48px);font-weight:900}
+  .tagline{display:inline-block;background:var(--yellow);border:3px solid #12202e;border-radius:12px;padding:12px 16px;font-weight:800;font-size:clamp(16px,2.6vw,22px);margin:16px 0;text-align:center;box-shadow:0 6px 0 #12202e}
+  .phone{display:inline-flex;gap:10px;align-items:center;background:#eef2f7;border:2px solid #12202e;border-radius:12px;padding:10px 16px;font-size:clamp(22px,4vw,32px);font-weight:900;color:#12202e;text-decoration:none}
+  .phone:hover{background:#fff}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+  @media(max-width:900px){.grid4{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.grid4{grid-template-columns:1fr}}
+  .box{background:#eef2f7;border:2px solid #12202e;border-radius:12px;padding:16px;min-height:150px}
+  .box h3{margin:0 0 6px;background:var(--blue);color:#fff;margin:-16px -16px 12px;padding:10px 12px;border-radius:10px 10px 0 0;font-size:16px}
+  .box button,.cta{width:100%;margin-top:10px;background:var(--bright);color:#fff;border:0;border-radius:10px;padding:10px 12px;font-weight:700}
+  .box button:hover,.cta:hover{background:#0b4fb0}
+  .cta{display:inline-block;width:auto;text-decoration:none;padding:12px 18px}
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+  @media(max-width:900px){.facts{grid-template-columns:repeat(2,1fr)}}
+  .fact{background:#fff;border:1px solid #dbe4ee;border-radius:12px;padding:14px;text-align:center}
+  .fact b{display:block;font-size:20px}
+  .discount{background:linear-gradient(90deg,#fff7ad,#ffe600);border:3px dashed #12202e;border-radius:14px;padding:16px;margin:18px 0;text-align:center}
+  .discount b{font-size:20px}
+  /* Magical pop-up */
+  .overlay{position:fixed;inset:0;background:rgba(8,20,35,.6);display:none;align-items:center;justify-content:center;z-index:50;padding:16px}
+  .overlay.open{display:flex}
+  .popup{position:relative;background:#fff;border-radius:18px;max-width:560px;width:100%;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,.4);animation:pop .25s ease-out}
+  @keyframes pop{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
+  .sparkles{position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:18px}
+  .sparkles i{position:absolute;font-style:normal;animation:twinkle 1.2s infinite}
+  @keyframes twinkle{0%,100%{opacity:.2;transform:scale(.7) rotate(0deg)}50%{opacity:1;transform:scale(1.3) rotate(20deg)}}
+  .popup h2{margin-top:0}
+  .close{position:absolute;top:10px;right:12px;background:#eef2f7;border:0;border-radius:50%;width:36px;height:36px;font-size:18px}
+  /* Game */
+  #game{background:#0f2033;color:#fff;border-radius:18px;padding:20px;margin-top:22px}
+  #game h2{margin:0 0 6px}
+  #game p{color:#dbe7f3}
+  #game-container{position:relative;background:#87ceeb;border-radius:14px;overflow:hidden;height:520px;margin:12px 0}
+  #game-container canvas{display:block;width:100%;height:100%}
+  .hud{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}
+  .hud div{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:8px 12px;font-weight:700}
+  .gbtn{border:0;border-radius:10px;padding:11px 14px;font-weight:800;background:#fff;color:#12202e}
+  .gbtn.primary{background:var(--yellow);border:2px solid #12202e}
+  .gbtn.danger{background:#ff5a5a;color:#fff}
+  .gbtn:disabled{opacity:.45;cursor:not-allowed}
+  .gcontrols{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+  .pad{display:grid;grid-template-columns:repeat(3,64px);gap:6px;justify-content:start;align-items:center}
+  .pad button{background:#1e3a56;color:#fff;border:1px solid #3b5a7d;border-radius:10px;padding:12px 6px;font-weight:800}
+  .winrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+  .win{width:118px;height:150px;border:3px solid #fff;border-radius:8px;background:linear-gradient(180deg,#bfe3ff,#e8f4ff);position:relative;overflow:hidden;color:#12202e;text-align:center;font-weight:800;padding-top:8px}
+  .win .dirt{position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(120,85,40,.75) 0 18px,transparent 19px),radial-gradient(circle at 70% 60%,rgba(90,70,45,.65) 0 24px,transparent 25px),radial-gradient(circle at 50% 80%,rgba(140,110,60,.55) 0 16px,transparent 17px)}
+  .win.wet .dirt{opacity:.55}
+  .win.clean{background:linear-gradient(180deg,#eafcff,#ffffff)}
+  .win.clean .dirt{display:none}
+  .win.broken{background:#cbd5e1}
+  .win.broken .dirt{display:none}
+  .win.broken:after{content:"💥 BROKEN";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:18px}
+  .win.target{outline:4px solid var(--yellow);box-shadow:0 0 0 4px #12202e}
+  .win span{position:relative;z-index:2;background:rgba(255,255,255,.85);border-radius:8px;padding:2px 6px;font-size:13px}
+  footer{color:#64748b;text-align:center;padding:18px;font-size:14px}
+  img.gallery{width:100%;height:auto;border-radius:12px;display:block}
+  #game-container{height:560px;touch-action:none}
+  #game-container canvas{touch-action:none}
+  .mobile-game{display:flex;gap:16px;flex-wrap:wrap;align-items:stretch;margin:12px 0}
+  .stick-wrap,.look-wrap{flex:1;min-width:190px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:12px;text-align:center}
+  #joystick{width:128px;height:128px;margin:6px auto;border-radius:50%;background:radial-gradient(circle at 50% 40%,#3b5a7d,#12283f);border:3px solid rgba(255,255,255,.5);position:relative;touch-action:none}
+  #stick-knob{width:56px;height:56px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#fff,#cbd5e1);border:2px solid #12202e;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);box-shadow:0 6px 14px rgba(0,0,0,.45)}
+  #lookpad{height:128px;margin:6px auto;border-radius:14px;background:linear-gradient(180deg,#1e3a56,#12283f);border:2px dashed rgba(255,255,255,.55);display:flex;align-items:center;justify-content:center;font-weight:800;touch-action:none;user-select:none;-webkit-user-select:none}
+  .gbtn{padding:13px 16px;font-size:15px}
+  .fallback-note{display:none;background:#fff7ad;color:#12202e;border-radius:10px;padding:10px 12px;font-weight:700;margin:10px 0}
+  .fallback-note.show{display:block}
+</style>
+</head>
+<body>
+<div class="titlebar"><span>🧽 Cleaner Window Cleaning — Home</span><small>San Diego County</small></div>
+<div class="addressbar">Address &nbsp;<b>https://www.cleanerwindowcleaning.com</b> &nbsp;•&nbsp; Professional, high-resolution site — sharp text, no pixelated hero</div>
+<div class="wrap">
+  <div class="hero">
+    <nav class="nav" aria-label="Main navigation">
+      <button data-popup="home">🏠 <span>Home</span></button>
+      <button data-popup="services">🧾 <span>Services</span></button>
+      <button data-popup="about">ℹ️ <span>About Us</span></button>
+      <button data-popup="gallery">🖼️ <span>Gallery</span></button>
+      <button data-popup="quote">📋 <span>Get a Quote</span></button>
+      <button data-popup="contact">📞 <span>Contact</span></button>
+      <button data-popup="game">🎮 <span>Play the Game</span></button>
+    </nav>
+    <main class="card">
+      <h1><span class="cleaner">CLEANER</span><br><span class="wc">WINDOW CLEANING</span></h1>
+      <p style="font-size:18px;margin:10px 0 0">Feel the pride. Feel the luxury. Sunlight pouring through truly clean glass.</p>
+      <div><span class="tagline">No Artificial Intelligence!<br>JUST clean windows!<br>Call us today!</span></div>
+      <div><a class="phone" href="tel:+12175528626">☎️ 217-552-8626</a></div>
+      <p>Serving <b>all of San Diego County</b> — residential and commercial, inside and out.</p>
+      <div class="discount" role="note">
+        <b>🎮 Play &amp; Save — Earn a Discount by Playing!</b><br>
+        Play &amp; Save: Clean windows in the game and earn a discount on your real window cleaning — call <a href="tel:+12175528626">217-552-8626</a> and mention your score to claim it.
+        <br><small>No fixed amount is promised online — your discount is confirmed on your call, when we talk through exactly what you need.</small>
+      </div>
+      <div class="facts">
+        <div class="fact"><b>$110/hour</b>regardless of window count</div>
+        <div class="fact"><b>100% Free</b>estimates</div>
+        <div class="fact"><b>9am–5pm</b>7 days a week</div>
+        <div class="fact"><b>San Diego</b>County-wide</div>
+      </div>
+      <div class="grid4">
+        <div class="box"><h3>Residential</h3><p>Brighten your home with crystal clear windows.</p><button data-popup="residential">✨ See Residential</button></div>
+        <div class="box"><h3>Commercial</h3><p>Keep your business looking its best.</p><button data-popup="commercial">✨ See Commercial</button></div>
+        <div class="box"><h3>Interior &amp; Exterior</h3><p>Streak-free results inside and out.</p><button data-popup="interior">✨ See Interior &amp; Exterior</button></div>
+        <div class="box"><h3>Get a Quote</h3><p>Fast. Friendly. Local.</p><button data-popup="quote">✨ Get a Quote</button></div>
+      </div>
+      <section style="margin-top:22px">
+        <h2>How we work</h2>
+        <p>Before starting, we talk with you about exactly what you expect — a basic window clean with a simple track wipe, or deeper detail like screens cleaned, thorough tracks, and skylights. We only do what you ask for. If you don’t want tracks touched, we won’t touch them.</p>
+        <p>Professional cleaning inside and out with traditional tools — squeegee, mop, T-bar — plus ladders. A water-fed pole with purified deionized water is available if requested in advance. Same-day booking is sometimes possible but never guaranteed; best to call so we can personally check the schedule.</p>
+        <a class="cta" href="tel:+12175528626">📞 Call 217-552-8626 to book</a>
+        <button class="cta" style="background:#12202e" data-popup="contact">✉️ Contact &amp; Email</button>
+      </section>
+    </main>
+  </div>
+
+  <section class="card" style="margin-top:18px">
+    <h2>Gallery</h2>
+    <p>Original landing design, shown at its natural quality. The hero above is a crisp, high-resolution recreation so text stays sharp on phones and desktops — the mockup below is the design inspiration, not a stretched pixelated hero.</p>
+    <img class="gallery" src="1000004706_1_5ivd.png" alt="Original Cleaner Window Cleaning landing page mockup" loading="lazy">
+    <p><small>If this image does not load here, upload <code>1000004706_1_5ivd.png</code> alongside <code>index.html</code> on the hosting account. The rest of the site does not depend on it.</small></p>
+  </section>
+
+  <section id="game">
+    <h2>🎮 Play: The Window Cleaning Game — Walk Around in First Person</h2>
+    <p><b>You start in first person — right through the cleaner's eyes, like virtual reality.</b> Walk up to a dirty window and clean it close-up. Press <b>V</b> or the Camera button any time to switch to <b>third person (GTA-style, seeing the cleaner from a distance)</b> and back.</p>
+    <p><b>Desktop:</b> <b>W A S D</b> or <b>arrow keys</b> to walk, <b>drag the mouse</b> on the 3D view to look (click it to lock the mouse), <b>V</b> for camera. <b>Phone:</b> drag the <b>left joystick</b> to walk, drag the <b>right look area — or drag right on the 3D view itself</b> — to look, and <b>tap a window in 3D or in the 2D strip below</b> to walk up to it. Then use the big cleaning buttons in order.</p>
+    <p><b>Discount:</b> Clean windows in the game and earn a discount on your real window cleaning — call 217-552-8626 and mention your score to claim it.</p>
+    <div id="game-container" aria-label="3D window cleaning game"></div>
+    <div class="fallback-note" id="fallback-note">3D could not load — you are playing in 2D mode. Tap a window below to walk up to it, then use the cleaning buttons. The full game still works.</div>
+    <div class="hud" aria-live="polite">
+      <div>⭐ Score: <span id="score">0</span></div>
+      <div>🪟 Windows cleaned: <span id="cleaned">0</span> / 5</div>
+      <div>💥 Broken: <span id="broken">0</span></div>
+      <div>🎯 Current window: <span id="current">Walk up to a dirty window</span></div>
+      <div>🧽 Current step: <span id="step">—</span></div>
+    </div>
+    <p id="hint" style="min-height:24px;font-weight:700">Tip: You are looking through the cleaner's eyes. Walk toward a window with brown dirt on it. When it glows, start cleaning.</p>
+    <div class="gcontrols">
+      <button class="gbtn primary" id="btn-wet">💧 1. Wet Window (Mop / T-Bar)</button>
+      <button class="gbtn" id="btn-take">🧹 2. Take Squeegee from Holster</button>
+      <button class="gbtn" id="btn-squeegee">🪟 3. Squeegee the Glass</button>
+      <button class="gbtn" id="btn-reholster">🔄 4. Reholster Squeegee</button>
+      <button class="gbtn" id="btn-wipe">✨ 5. Wipe (Extra Points)</button>
+      <button class="gbtn danger" id="btn-hard">💥 Hit Too Hard</button>
+      <button class="gbtn" id="btn-camera">📷 Camera: First-Person (V to switch)</button>
+      <button class="gbtn" id="btn-restart">↻ Restart Game</button>
+    </div>
+    <div class="mobile-game">
+      <div class="stick-wrap">
+        <p style="margin:0 0 6px"><b>🕹️ Joystick — walk</b></p>
+        <div id="joystick" aria-label="Virtual joystick to walk"><div id="stick-knob"></div></div>
+        <p style="margin:6px 0 0;font-size:14px">Drag up to walk forward, down to back up, left / right to strafe.</p>
+      </div>
+      <div class="look-wrap">
+        <p style="margin:0 0 6px"><b>👀 Look area — drag to look around</b></p>
+        <div id="lookpad">Drag here to look 👆</div>
+        <p style="margin:6px 0 0;font-size:14px">You can also drag directly on the 3D view to look.</p>
+      </div>
+    </div>
+    <div style="flex:1;min-width:240px">
+      <p style="margin:0 0 6px"><b>2D windows — tap one to walk up to it (this also works if 3D cannot load):</b></p>
+      <div class="winrow" id="winrow"></div>
+    </div>
+    <p><small>Game notes: Wet +5, Take Squeegee +5, Squeegee +20, Reholster +5, Wipe +15 extra. Hitting a window too hard breaks it and costs 30 points. Broken windows cannot be cleaned — walk to the next one. Discount is claimed by phone, not by a fixed online coupon.</small></p>
+  </section>
+<footer>Cleaner Window Cleaning • San Diego County • $110/hour • Estimates 100% free • 9am–5pm, 7 days a week • Call 217-552-8626 • jerry@cleanerwindowcleaning.com</footer>
+</div>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true">
+  <div class="popup">
+    <div class="sparkles" aria-hidden="true"><i style="left:12%;top:18%">✨</i><i style="left:78%;top:12%">✨</i><i style="left:88%;top:62%">💧</i><i style="left:8%;top:72%">✨</i><i style="left:48%;top:8%">🫧</i></div>
+    <button class="close" id="popup-close" aria-label="Close pop-up">×</button>
+    <div id="popup-body"></div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  // ---------- Magical pop-ups ----------
+  var POPUPS = {
+    home: "<h2>🏠 Welcome Home</h2><p>Cleaner Window Cleaning — San Diego County. Crystal-clear windows, inside and out. <b>$110/hour, estimates 100% free.</b></p><a class='cta' href='tel:+12175528626'>📞 Call 217-552-8626</a>",
+    services: "<h2>🧾 Services</h2><p>Residential, Commercial, and Interior &amp; Exterior cleaning. Basic clean with a track wipe, or deeper detail — screens, thorough tracks, skylights. We only do what you ask for.</p><p>Tools: squeegee, mop, T-bar, ladders. Water-fed pole with purified deionized water if requested in advance.</p><a class='cta' href='tel:+12175528626'>📞 Call to Book</a>",
+    residential: "<h2>🏠 Residential</h2><p>✨ Brighten your home with crystal clear windows.</p><p>Inside and out, $110/hour, free estimates, 9am–5pm, 7 days a week, all of San Diego County.</p><a class='cta' href='tel:+12175528626'>📞 Call 217-552-8626</a>",
+    commercial: "<h2>🏢 Commercial</h2><p>✨ Keep your business looking its best.</p><p>Professional, streak-free glass for shops, offices and storefronts. Call for a free estimate based on hours, not window count.</p><a class='cta' href='tel:+12175528626'>📞 Call 217-552-8626</a>",
+    interior: "<h2>🪟 Interior &amp; Exterior</h2><p>✨ Streak-free results inside and out.</p><p>We clean both sides, talk through exactly what you expect first, and only do what you ask for.</p><a class='cta' href='tel:+12175528626'>📞 Call 217-552-8626</a>",
+    about: "<h2>ℹ️ About Us</h2><p>Feel the pride. Feel the luxury. Experienced window cleaning since 2009, with a business run since 2010. Now serving San Diego County — travelling and working, with a phone-first, customer-first approach.</p><a class='cta' href='tel:+12175528626'>📞 Call 217-552-8626</a>",
+    gallery: "<h2>🖼️ Gallery</h2><p>See the Gallery section above for the original landing design. Real job photos can be added here — squeegee work, tools and bucket, and high-rise jobs.</p><a class='cta' href='#game'>🎮 Play the Game Below</a>",
+    quote: "<h2>📋 Get a Quote — Fast. Friendly. Local.</h2><p><b>$110/hour</b> regardless of window count. <b>Estimates 100% free.</b> We look at the glass / building and estimate hours. Hours: <b>9am–5pm, 7 days a week</b>. Same-day sometimes possible, never guaranteed.</p><p><b>🎮 Play &amp; Save:</b> Clean windows in the game and earn a discount on your real window cleaning — call 217-552-8626 and mention your score to claim it.</p><a class='cta' href='tel:+12175528626'>📞 Call 217-552-8626 for a Free Quote</a>",
+    contact: "<h2>📞 Contact</h2><p>Preferred contact is a <b>phone call</b>.</p><p>Phone: <a href='tel:+12175528626'>217-552-8626</a><br>Email: <a href='mailto:jerry@cleanerwindowcleaning.com'>jerry@cleanerwindowcleaning.com</a><br>Hours: 9am–5pm, 7 days a week<br>Area: All of San Diego County</p><a class='cta' href='tel:+12175528626'>📞 Call Now</a>",
+    game: "<h2>🎮 Play the Game</h2><p>Scroll down to the game. Walk around with WASD / arrows, switch camera with V, walk up to a dirty window, then clean it step by step. Clean windows, earn a discount — call and mention your score!</p><a class='cta' href='#game'>▶️ Go to the Game</a>"
+  };
+  var overlay = document.getElementById('overlay');
+  var bodyEl = document.getElementById('popup-body');
+  function openPopup(key){
+    bodyEl.innerHTML = POPUPS[key] || POPUPS.home;
+    overlay.classList.add('open');
+  }
+  function closePopup(){ overlay.classList.remove('open'); }
+  document.querySelectorAll('[data-popup]').forEach(function(btn){
+    btn.addEventListener('click', function(){ openPopup(btn.getAttribute('data-popup')); });
+  });
+  document.getElementById('popup-close').addEventListener('click', closePopup);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) closePopup(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closePopup(); });
+
+  // ---------- Game state (shared by 3D and 2D, so the game works even if 3D fails) ----------
+  var STEPS = ['Wet Window','Take Squeegee','Squeegee Glass','Reholster Squeegee','Wipe'];
+  var windows = [];
+  for(var i=0;i<5;i++){ windows.push({id:i+1, x:-10+i*5, z:0.6, state:'dirty', step:0, broken:false}); }
+  var score = 0, cleaned = 0, brokenCount = 0, discountShown = false;
+  var player = {x:0, z:9, yaw:0, pitch:0};
+  var keys = {};
+  var cameraMode = 'first'; // FIRST-PERSON by default: through the cleaner's eyes
+  var targetIndex = -1;
+  var tool = 'none';
+  var windowsDirty = true;
+
+  var scoreEl = document.getElementById('score');
+  var cleanedEl = document.getElementById('cleaned');
+  var brokenEl = document.getElementById('broken');
+  var currentEl = document.getElementById('current');
+  var stepEl = document.getElementById('step');
+  var hintEl = document.getElementById('hint');
+  var winrow = document.getElementById('winrow');
+  var winDivs = [];
+
+  function setHint(t){ hintEl.textContent = t; }
+  function updateHUD(){
+    scoreEl.textContent = score;
+    cleanedEl.textContent = cleaned;
+    brokenEl.textContent = brokenCount;
+    if(targetIndex >= 0){
+      var w = windows[targetIndex];
+      currentEl.textContent = 'Window ' + w.id + ' — ' + w.state;
+      stepEl.textContent = w.broken ? 'Broken' : (w.step < STEPS.length ? 'Next: ' + STEPS[w.step] : 'Clean! Wipe was extra');
+    } else {
+      currentEl.textContent = 'Walk up to a dirty window';
+      stepEl.textContent = '—';
+    }
+    winDivs.forEach(function(div, idx){
+      var w2 = windows[idx];
+      div.className = 'win ' + (w2.broken ? 'broken' : (w2.state === 'clean' ? 'clean' : (w2.state === 'wet' ? 'wet' : ''))) + (idx === targetIndex ? ' target' : '');
+      var label = w2.broken ? 'Window ' + w2.id + ' • Broken' : (w2.state === 'clean' ? 'Window ' + w2.id + ' • Clean ✨' : 'Window ' + w2.id + ' • ' + w2.state);
+      div.querySelector('span').textContent = label;
+    });
+    var camBtn = document.getElementById('btn-camera');
+    if(camBtn) camBtn.textContent = cameraMode === 'third' ? '📷 Camera: Third-Person (V to switch)' : '📷 Camera: First-Person (V to switch)';
+    if(typeof updateTools === 'function') updateTools();
+  }
+  function selectWindow(idx, approach){
+    var w = windows[idx];
+    if(w.broken){ setHint('Window ' + w.id + ' is broken. Walk to a dirty window.'); return; }
+    if(w.state === 'clean'){ setHint('Window ' + w.id + ' is already clean. Walk to a dirty window.'); return; }
+    targetIndex = idx;
+    if(approach){
+      // Walk the player up to this window, facing the house, so the buttons work at once.
+      player.x = w.x; player.z = 4.2; player.yaw = 0; player.pitch = 0;
+    }
+    setHint('You are at Window ' + w.id + '. Start with Wet Window, then follow the buttons in order.');
+    updateHUD();
+  }
+  function buildWinRow(){
+    winrow.innerHTML = '';
+    winDivs = [];
+    windows.forEach(function(w, idx){
+      var d = document.createElement('div');
+      d.className = 'win';
+      d.innerHTML = '<span>Window ' + w.id + ' • dirty</span><div class="dirt"></div>';
+      // FIXED: use idx from forEach (previously used undefined idx, which threw ReferenceError).
+      d.addEventListener('click', function(){ selectWindow(idx, true); });
+      winrow.appendChild(d); winDivs.push(d);
+    });
+  }
+  function findTarget(){
+    // Only auto-target when the player is actually close in 3D; a manual tap keeps its target.
+    var best = -1, bestD = 5.2;
+    windows.forEach(function(w, idx){
+      if(w.broken || w.state === 'clean') return;
+      var dx = w.x - player.x, dz = w.z - player.z;
+      var d = Math.sqrt(dx*dx + dz*dz);
+      if(d < bestD){ bestD = d; best = idx; }
+    });
+    if(best >= 0) targetIndex = best;
+  }
+  function doStep(expectedIndex, points, label, nextTool){
+    if(targetIndex < 0){ setHint('Walk up to a dirty window first — get close until it glows, or tap a window below.'); return; }
+    var w = windows[targetIndex];
+    if(w.broken){ setHint('That window is broken. Walk to the next dirty window.'); return; }
+    if(w.step !== expectedIndex){
+      setHint('Hint: ' + label + ' is not next. Next step is: ' + STEPS[w.step] + '. Follow the order to clean it properly!');
+      return;
+    }
+    w.step++;
+    score += points;
+    tool = nextTool;
+    windowsDirty = true;
+    if(expectedIndex === 0){ w.state = 'wet'; setHint('💧 Window ' + w.id + ' is wet! Now take the squeegee from the holster.'); }
+    if(expectedIndex === 1){ setHint('🧹 Squeegee in hand! Now squeegee the glass.'); }
+    if(expectedIndex === 2){ setHint('🪟 Glass squeegeed! Now reholster the squeegee.'); }
+    if(expectedIndex === 3){
+      w.state = 'clean'; cleaned++;
+      setHint('✨ Window ' + w.id + ' is CLEAN! +5 for reholstering. Wipe it for +15 extra, or walk to the next window.');
+      checkDiscount();
+    }
+    if(expectedIndex === 4){
+      if(w.state !== 'clean'){ setHint('Wipe comes after the window is clean. Finish squeegee + reholster first.'); w.step--; return; }
+      setHint('✨ Extra shine! +15 for wiping Window ' + w.id + '. Walk to the next dirty window.');
+      checkDiscount();
+    }
+    updateHUD(); drawWindows3D();
+  }
+  function checkDiscount(){
+    if(!discountShown && (cleaned >= 3 || score >= 100)){
+      discountShown = true;
+      bodyEl.innerHTML = "<h2>🎉 You Earned a Discount!</h2><p>Play &amp; Save: You cleaned windows in the game and earned a discount on your real window cleaning.</p><p>Your score: <b>" + score + "</b> • Windows cleaned: <b>" + cleaned + "</b></p><p>To claim it, call <b>217-552-8626</b> and mention your score. No fixed amount is promised online — your discount is confirmed on your call.</p><a class='cta' href='tel:+12175528626'>📞 Call 217-552-8626 to Claim</a>";
+      overlay.classList.add('open');
+    }
+  }
+  function hitTooHard(){
+    if(targetIndex < 0){ setHint('Walk up to a dirty window first.'); return; }
+    var w = windows[targetIndex];
+    if(w.broken || w.state === 'clean'){ setHint('That window is already finished or broken — walk to the next dirty one.'); return; }
+    w.broken = true; w.state = 'broken'; brokenCount++;
+    var lost = Math.min(30, score); score = Math.max(0, score - 30);
+    tool = 'none'; windowsDirty = true;
+    setHint('💥 Oh no! You hit Window ' + w.id + ' too hard and broke it! -' + lost + ' points. Walk to the next dirty window.');
+    updateHUD(); drawWindows3D();
+  }
+  function restartGame(){
+    windows.forEach(function(w){ w.state = 'dirty'; w.step = 0; w.broken = false; });
+    score = 0; cleaned = 0; brokenCount = 0; discountShown = false; tool = 'none'; windowsDirty = true;
+    player.x = 0; player.z = 9; player.yaw = 0; player.pitch = 0;
+    setHint('Game restarted. You are in first person. Walk up to a dirty window and start with Wet Window.');
+    updateHUD(); drawWindows3D();
+  }
+  document.getElementById('btn-wet').addEventListener('click', function(){ doStep(0, 5, 'Wet Window', 'mop'); });
+  document.getElementById('btn-take').addEventListener('click', function(){ doStep(1, 5, 'Take Squeegee', 'squeegee'); });
+  document.getElementById('btn-squeegee').addEventListener('click', function(){ doStep(2, 20, 'Squeegee Glass', 'squeegee'); });
+  document.getElementById('btn-reholster').addEventListener('click', function(){ doStep(3, 5, 'Reholster', 'none'); });
+  document.getElementById('btn-wipe').addEventListener('click', function(){
+    if(targetIndex < 0){ setHint('Walk up to a window first.'); return; }
+    var w = windows[targetIndex];
+    if(w.broken){ setHint('That window is broken.'); return; }
+    if(w.state !== 'clean'){ setHint('Wipe is extra — clean the window first (Wet → Take → Squeegee → Reholster), then wipe.'); return; }
+    if(w.step === 5){ setHint('Already wiped! Walk to the next window.'); return; }
+    w.step = 5; score += 15; windowsDirty = true; setHint('✨ Extra shine! +15 for wiping.'); checkDiscount(); updateHUD(); drawWindows3D();
+  });
+  document.getElementById('btn-hard').addEventListener('click', hitTooHard);
+  document.getElementById('btn-restart').addEventListener('click', restartGame);
+  function toggleCamera(){
+    cameraMode = cameraMode === 'third' ? 'first' : 'third';
+    setHint(cameraMode === 'third' ? '📷 Third-person view (GTA-style) — you can see the cleaner from a distance.' : '📷 First-person view — you are looking through the cleaner’s eyes.');
+    updateHUD();
+  }
+  document.getElementById('btn-camera').addEventListener('click', toggleCamera);
+
+  // ---------- Controls: keyboard, joystick, look drag ----------
+  document.addEventListener('keydown', function(e){
+    keys[e.key.toLowerCase()] = true;
+    if(e.key === 'v' || e.key === 'V') toggleCamera();
+    if(['arrowup','arrowdown','arrowleft','arrowright',' '].indexOf(e.key.toLowerCase()) >= 0) e.preventDefault();
+  });
+  document.addEventListener('keyup', function(e){ keys[e.key.toLowerCase()] = false; });
+
+  // Virtual joystick (left side, phone): drag to walk forward/back/strafe.
+  var joy = {x:0, y:0, active:false, id:null};
+  var joystickEl = document.getElementById('joystick');
+  var knobEl = document.getElementById('stick-knob');
+  function joyUpdate(e){
+    var r = joystickEl.getBoundingClientRect();
+    var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+    var dx = (e.clientX - cx) / (r.width / 2), dy = (e.clientY - cy) / (r.height / 2);
+    var len = Math.sqrt(dx*dx + dy*dy);
+    if(len > 1){ dx /= len; dy /= len; }
+    joy.x = dx; joy.y = dy;
+    knobEl.style.transform = 'translate(calc(-50% + ' + (dx*32) + 'px), calc(-50% + ' + (dy*32) + 'px))';
+  }
+  function joyReset(){ joy.x = 0; joy.y = 0; joy.active = false; joy.id = null; knobEl.style.transform = 'translate(-50%,-50%)'; }
+  joystickEl.addEventListener('pointerdown', function(e){ joy.active = true; joy.id = e.pointerId; joystickEl.setPointerCapture(e.pointerId); joyUpdate(e); });
+  joystickEl.addEventListener('pointermove', function(e){ if(joy.active && e.pointerId === joy.id) joyUpdate(e); });
+  joystickEl.addEventListener('pointerup', function(e){ if(e.pointerId === joy.id) joyReset(); });
+  joystickEl.addEventListener('pointercancel', function(e){ if(e.pointerId === joy.id) joyReset(); });
+
+  // Look drag (right area + 3D canvas): pointermove works for mouse AND touch.
+  var lookDrag = {active:false, id:null, lastX:0, lastY:0};
+  function lookDelta(dx, dy){
+    player.yaw -= dx * 0.005;
+    player.pitch = Math.max(-0.7, Math.min(0.7, player.pitch - dy * 0.005));
+  }
+  var lookpadEl = document.getElementById('lookpad');
+  lookpadEl.addEventListener('pointerdown', function(e){ lookDrag.active = true; lookDrag.id = e.pointerId; lookDrag.lastX = e.clientX; lookDrag.lastY = e.clientY; lookpadEl.setPointerCapture(e.pointerId); });
+  lookpadEl.addEventListener('pointermove', function(e){ if(lookDrag.active && e.pointerId === lookDrag.id){ lookDelta(e.clientX - lookDrag.lastX, e.clientY - lookDrag.lastY); lookDrag.lastX = e.clientX; lookDrag.lastY = e.clientY; } });
+  lookpadEl.addEventListener('pointerup', function(e){ if(e.pointerId === lookDrag.id) lookDrag.active = false; });
+  lookpadEl.addEventListener('pointercancel', function(e){ if(e.pointerId === lookDrag.id) lookDrag.active = false; });
+
+  // ---------- Realistic 3D ----------
+  var container = document.getElementById('game-container');
+  var scene, camera, renderer, cleaner, mopMesh, squeegeeMesh, fpMop, fpSqueegee, fpGroup;
+  var windowMeshes = [], windowTextures = [];
+  var raycaster = null;
+  function seededRand(seed, n){
+    var v = Math.sin(seed * 127.1 + n * 311.7) * 43758.5453;
+    return v - Math.floor(v);
+  }
+  function canvasTexture(w, h, draw){
+    var c = document.createElement('canvas'); c.width = w; c.height = h;
+    draw(c.getContext('2d'), w, h);
+    var tex = null;
+    if(typeof THREE !== 'undefined'){ tex = new THREE.CanvasTexture(c); tex.anisotropy = 4; }
+    return {canvas:c, texture:tex};
+  }
+  function makeWindowTexture(seed){
+    var c = document.createElement('canvas'); c.width = 512; c.height = 640;
+    return {canvas:c, ctx:c.getContext('2d'), seed:seed, texture:null};
+  }
+  function drawWindowTexture(t, w){
+    var ctx = t.ctx, cw = 512, ch = 640;
+    ctx.clearRect(0, 0, cw, ch);
+    // Realistic glass: sky gradient, soft cloud reflections, faint tree line.
+    var g = ctx.createLinearGradient(0, 0, 0, ch);
+    g.addColorStop(0, '#7fb6dd'); g.addColorStop(0.55, '#bcd9ee'); g.addColorStop(1, '#d8e9f5');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, cw, ch);
+    ctx.fillStyle = 'rgba(255,255,255,0.55)';
+    for(var ci=0; ci<4; ci++){
+      var cx = seededRand(t.seed, ci) * 420 + 20, cy = 60 + ci * 90;
+      ctx.beginPath(); ctx.ellipse(cx, cy, 70, 22, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(cx + 40, cy + 12, 50, 18, 0, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.fillStyle = 'rgba(70,110,60,0.35)'; ctx.fillRect(0, ch - 90, cw, 90);
+    ctx.fillStyle = 'rgba(255,255,255,0.18)';
+    ctx.save(); ctx.translate(256, 320); ctx.rotate(-0.6); ctx.fillRect(-320, -18, 640, 36); ctx.restore();
+    if(w.broken){
+      ctx.fillStyle = 'rgba(150,165,180,0.85)'; ctx.fillRect(0, 0, cw, ch);
+      ctx.strokeStyle = '#2b3a4a'; ctx.lineWidth = 3;
+      for(var bi=0; bi<14; bi++){
+        var a = (bi / 14) * Math.PI * 2;
+        ctx.beginPath(); ctx.moveTo(256, 320);
+        ctx.lineTo(256 + Math.cos(a) * 260, 320 + Math.sin(a) * 330); ctx.stroke();
+      }
+      ctx.strokeStyle = 'rgba(255,255,255,0.6)'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.arc(256, 320, 70, 0, Math.PI * 2); ctx.stroke();
+      ctx.fillStyle = '#12202e'; ctx.font = 'bold 30px sans-serif'; ctx.fillText('BROKEN', 185, 330);
+    } else if(w.state === 'clean'){
+      // Almost clear: faint shine + sparkles only.
+      ctx.fillStyle = 'rgba(255,255,255,0.85)';
+      for(var si=0; si<10; si++){
+        var sx = seededRand(9, si) * 480 + 10, sy = seededRand(11, si) * 600 + 10;
+        ctx.beginPath(); ctx.arc(sx, sy, 5, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.fillStyle = '#0b3d91'; ctx.font = 'bold 26px sans-serif'; ctx.fillText('✨ CLEAN', 185, 330);
+    } else {
+      // Dirt: brown smudges, fingerprints, streaks. Wet = fewer dirt + water streaks.
+      var dirtCount = (w.state === 'wet') ? 9 : 22;
+      for(var di=0; di<dirtCount; di++){
+        var dx2 = seededRand(t.seed, di) * 470 + 10, dy2 = seededRand(t.seed + 3, di) * 600 + 10;
+        var rr = 14 + seededRand(t.seed + 5, di) * 30;
+        ctx.fillStyle = (w.state === 'wet') ? 'rgba(120,85,40,0.30)' : 'rgba(110,80,38,0.72)';
+        ctx.beginPath(); ctx.arc(dx2, dy2, rr, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.fillStyle = 'rgba(90,70,45,0.55)';
+      for(var st=0; st<10; st++){ ctx.fillRect(20 + st * 48, 380 + seededRand(13, st) * 60, 60, 7); }
+      if(w.state === 'wet'){
+        ctx.fillStyle = 'rgba(255,255,255,0.45)';
+        for(var wi=0; wi<18; wi++){ ctx.fillRect(20 + wi * 26, 30 + seededRand(17, wi) * 120, 4, 90 + seededRand(19, wi) * 120); }
+      }
+    }
+    if(t.texture) t.texture.needsUpdate = true;
+  }
+  function drawWindows3D(){
+    if(!windowsDirty) return;
+    windowTextures.forEach(function(t, idx){ drawWindowTexture(t, windows[idx]); });
+    windowsDirty = false;
+  }
+  function updateTools(){
+    if(mopMesh) mopMesh.visible = (tool === 'mop' && cameraMode === 'third');
+    if(squeegeeMesh) squeegeeMesh.visible = (tool === 'squeegee' && cameraMode === 'third');
+    if(cleaner) cleaner.visible = (cameraMode === 'third');
+    if(fpMop) fpMop.visible = (tool === 'mop' && cameraMode === 'first');
+    if(fpSqueegee) fpSqueegee.visible = (tool === 'squeegee' && cameraMode === 'first');
+    if(fpGroup) fpGroup.visible = (cameraMode === 'first' && tool !== 'none');
+  }
+  function roundedMesh(mat, radius, height){
+    // Capsule-like: cylinder + two spheres, no sharp boxes for the body.
+    var grp = new THREE.Group();
+    var cyl = new THREE.Mesh(new THREE.CylinderGeometry(radius * 0.92, radius, Math.max(0.1, height - radius), 20), mat);
+    grp.add(cyl);
+    var top = new THREE.Mesh(new THREE.SphereGeometry(radius * 0.92, 20, 14), mat); top.position.y = (height - radius) / 2; grp.add(top);
+    var bot = new THREE.Mesh(new THREE.SphereGeometry(radius, 20, 14), mat); bot.position.y = -(height - radius) / 2; grp.add(bot);
+    return grp;
+  }
+  function init3D(){
+    if(typeof THREE === 'undefined'){
+      // 3D failed, but the game is NOT dead: 2D strip + buttons below are the full game.
+      var note = document.getElementById('fallback-note');
+      if(note) note.classList.add('show');
+      container.innerHTML = '<div style="padding:28px;color:#12202e;background:linear-gradient(180deg,#eaf6ff,#fff);border-radius:12px;margin:12px;text-align:center"><b>3D view could not load (no internet / Three.js unavailable).</b><br>Play in 2D below instead: tap a window, then use Wet → Take → Squeegee → Reholster → Wipe. Score, breaks and discounts all still work.</div>';
+      return false;
+    }
+    scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x8fc7e8);
+    scene.fog = new THREE.Fog(0x8fc7e8, 34, 78);
+    camera = new THREE.PerspectiveCamera(75, container.clientWidth / 560, 0.1, 220);
+    renderer = new THREE.WebGLRenderer({antialias:true});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setSize(container.clientWidth, 560);
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    if(renderer.outputEncoding) renderer.outputEncoding = THREE.sRGBEncoding;
+    container.innerHTML = '';
+    container.appendChild(renderer.domElement);
+    raycaster = new THREE.Raycaster();
+
+    scene.add(new THREE.AmbientLight(0xfff4e0, 0.75));
+    var sun = new THREE.DirectionalLight(0xfff2cc, 1.15);
+    sun.position.set(14, 22, 16); sun.castShadow = true;
+    sun.shadow.mapSize.set(2048, 2048);
+    sun.shadow.camera.left = -26; sun.shadow.camera.right = 26; sun.shadow.camera.top = 26; sun.shadow.camera.bottom = -26; sun.shadow.camera.far = 70;
+    scene.add(sun);
+
+    // Sky dome gradient + clouds + sun glow (soft, not flat)
+    var skyGeo = new THREE.SphereGeometry(90, 24, 16);
+    var skyMat = new THREE.MeshBasicMaterial({side:THREE.BackSide, map:canvasTexture(512, 256, function(ctx, w, h){
+      var gg = ctx.createLinearGradient(0, 0, 0, h);
+      gg.addColorStop(0, '#4f9fd8'); gg.addColorStop(0.6, '#8fc7e8'); gg.addColorStop(1, '#eaf6ff');
+      ctx.fillStyle = gg; ctx.fillRect(0, 0, w, h);
+    }).texture});
+    scene.add(new THREE.Mesh(skyGeo, skyMat));
+    var cloudMat = new THREE.MeshLambertMaterial({color:0xffffff, transparent:true, opacity:0.92});
+    for(var cl=0; cl<6; cl++){
+      var cloud = new THREE.Group();
+      for(var cp=0; cp<4; cp++){
+        var puff = new THREE.Mesh(new THREE.SphereGeometry(1.6 + seededRand(cl, cp) * 1.4, 16, 12), cloudMat);
+        puff.position.set(cp * 2.2 - 3, seededRand(cl + 2, cp) * 0.8, 0); puff.scale.y = 0.55; cloud.add(puff);
+      }
+      cloud.position.set(-28 + cl * 11, 15 + seededRand(cl, 9) * 4, -18 - seededRand(cl, 4) * 8);
+      scene.add(cloud);
+    }
+
+    // Lawn (textured, not flat green) + concrete path + road
+    var lawnTex = canvasTexture(512, 512, function(ctx, w, h){
+      ctx.fillStyle = '#5d9040'; ctx.fillRect(0, 0, w, h);
+      for(var li=0; li<6000; li++){
+        ctx.fillStyle = seededRand(21, li) > 0.5 ? 'rgba(40,90,30,0.22)' : 'rgba(140,190,90,0.20)';
+        ctx.fillRect(seededRand(23, li) * w, seededRand(25, li) * h, 4, 4);
+      }
+      ctx.fillStyle = 'rgba(255,255,255,0.05)';
+      for(var ls=0; ls<8; ls++){ if(ls % 2 === 0) ctx.fillRect(ls * 64, 0, 64, h); }
+    }).texture;
+    lawnTex.wrapS = THREE.RepeatWrapping; lawnTex.wrapT = THREE.RepeatWrapping; lawnTex.repeat.set(6, 4);
+    var ground = new THREE.Mesh(new THREE.PlaneGeometry(90, 60), new THREE.MeshLambertMaterial({map:lawnTex}));
+    ground.rotation.x = -Math.PI / 2; ground.position.set(0, 0, 8); ground.receiveShadow = true; scene.add(ground);
+    var pathTex = canvasTexture(512, 256, function(ctx, w, h){
+      ctx.fillStyle = '#b9b1a2'; ctx.fillRect(0, 0, w, h);
+      for(var pi=0; pi<2500; pi++){ ctx.fillStyle = 'rgba(80,70,55,0.25)'; ctx.fillRect(seededRand(31, pi) * w, seededRand(33, pi) * h, 2, 2); }
+      ctx.strokeStyle = 'rgba(90,80,65,0.5)'; ctx.lineWidth = 3;
+      for(var pj=0; pj<5; pj++){ ctx.beginPath(); ctx.moveTo(pj * 110, 0); ctx.lineTo(pj * 110, h); ctx.stroke(); }
+    }).texture;
+    var path = new THREE.Mesh(new THREE.BoxGeometry(3.2, 0.12, 9), new THREE.MeshLambertMaterial({map:pathTex}));
+    path.position.set(0, 0.06, 7.5); path.receiveShadow = true; scene.add(path);
+    var road = new THREE.Mesh(new THREE.BoxGeometry(90, 0.1, 5), new THREE.MeshLambertMaterial({color:0x3f4750}));
+    road.position.set(0, 0.05, 13.5); road.receiveShadow = true; scene.add(road);
+
+    // House: stucco facade (procedural texture), shingle roof, chimney, door, porch light
+    var stucco = canvasTexture(1024, 512, function(ctx, w, h){
+      ctx.fillStyle = '#e9ddc4'; ctx.fillRect(0, 0, w, h);
+      for(var si2=0; si2<9000; si2++){
+        var gv = Math.floor(seededRand(3, si2) * 60);
+        ctx.fillStyle = 'rgba(' + (180 + gv) + ',' + (165 + gv) + ',130,0.10)';
+        ctx.fillRect(seededRand(5, si2) * w, seededRand(7, si2) * h, 3, 3);
+      }
+      var grad2 = ctx.createLinearGradient(0, 0, 0, h);
+      grad2.addColorStop(0, 'rgba(255,255,255,0.14)'); grad2.addColorStop(1, 'rgba(90,70,40,0.20)');
+      ctx.fillStyle = grad2; ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = '#b7a88d'; ctx.fillRect(0, h - 48, w, 48);
+    }).texture;
+    var building = new THREE.Mesh(new THREE.BoxGeometry(32, 7, 2), new THREE.MeshLambertMaterial({map:stucco}));
+    building.position.set(0, 3.5, -0.5); building.castShadow = true; building.receiveShadow = true; scene.add(building);
+    var roofTex = canvasTexture(512, 256, function(ctx, w, h){
+      ctx.fillStyle = '#6b3d26'; ctx.fillRect(0, 0, w, h);
+      for(var ri=0; ri<8; ri++) for(var rj=0; rj<16; rj++){
+        ctx.fillStyle = (ri + rj) % 2 ? 'rgba(0,0,0,0.18)' : 'rgba(255,255,255,0.08)';
+        ctx.fillRect(rj * 32 + (ri % 2) * 16, ri * 32, 30, 30);
+      }
+    }).texture;
+    var roof = new THREE.Mesh(new THREE.BoxGeometry(33.5, 0.7, 3.4), new THREE.MeshLambertMaterial({map:roofTex}));
+    roof.position.set(0, 7.25, -0.5); roof.castShadow = true; scene.add(roof);
+    var chimney = new THREE.Mesh(new THREE.CylinderGeometry(0.55, 0.6, 2.2, 16), new THREE.MeshLambertMaterial({color:0x9a6b52}));
+    chimney.position.set(11, 8.2, -0.5); chimney.castShadow = true; scene.add(chimney);
+    var door = new THREE.Mesh(new THREE.BoxGeometry(1.6, 3, 0.15), new THREE.MeshLambertMaterial({color:0x5b3a24}));
+    door.position.set(15, 1.5, 0.55); scene.add(door);
+
+    // Trees + bushes (spheres / cylinders, not boxes)
+    var trunkMat = new THREE.MeshLambertMaterial({color:0x6b4a2a});
+    var leafMat = new THREE.MeshLambertMaterial({color:0x3f7a33});
+    [-19, 19].forEach(function(tx){
+      var trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.36, 3.2, 12), trunkMat);
+      trunk.position.set(tx, 1.6, 2); trunk.castShadow = true; scene.add(trunk);
+      for(var ti=0; ti<3; ti++){
+        var leaf = new THREE.Mesh(new THREE.SphereGeometry(1.9 - ti * 0.3, 18, 14), leafMat);
+        leaf.position.set(tx, 3.6 + ti * 1.1, 2); leaf.castShadow = true; scene.add(leaf);
+      }
+    });
+
+    // Human-shaped cleaner (third-person only): rounded head, torso, arms, legs, cap, bucket.
+    cleaner = new THREE.Group();
+    var blueMat = new THREE.MeshLambertMaterial({color:0x1565d8});
+    var darkMat = new THREE.MeshLambertMaterial({color:0x1e293b});
+    var skinMat = new THREE.MeshLambertMaterial({color:0xe8b88a});
+    var torso = roundedMesh(blueMat, 0.36, 0.95); torso.position.y = 1.18; torso.traverse(function(o){ o.castShadow = true; }); cleaner.add(torso);
+    var head = new THREE.Mesh(new THREE.SphereGeometry(0.26, 24, 18), skinMat); head.position.y = 1.88; head.castShadow = true; cleaner.add(head);
+    var capTop = new THREE.Mesh(new THREE.SphereGeometry(0.28, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2), blueMat); capTop.position.y = 1.95; cleaner.add(capTop);
+    var capBrim = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.28, 0.05, 20), blueMat); capBrim.position.set(0, 1.93, 0.22); capBrim.scale.z = 1.4; cleaner.add(capBrim);
+    [-0.24, 0.24].forEach(function(ax){
+      var arm = roundedMesh(blueMat, 0.11, 0.72); arm.position.set(ax, 1.25, 0.1); arm.rotation.x = 0.25; arm.traverse(function(o){ o.castShadow = true; }); cleaner.add(arm);
+      var hand = new THREE.Mesh(new THREE.SphereGeometry(0.11, 16, 12), skinMat); hand.position.set(ax, 0.88, 0.28); cleaner.add(hand);
+      var leg = roundedMesh(darkMat, 0.14, 0.78); leg.position.set(ax, 0.39, 0); leg.traverse(function(o){ o.castShadow = true; }); cleaner.add(leg);
+      var shoe = new THREE.Mesh(new THREE.SphereGeometry(0.15, 16, 12), darkMat); shoe.position.set(ax, 0.07, 0.08); shoe.scale.set(1, 0.6, 1.5); cleaner.add(shoe);
+    });
+    var bucket = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.24, 0.38, 18), new THREE.MeshLambertMaterial({color:0x475569}));
+    bucket.position.set(0.65, 0.19, 0.55); bucket.castShadow = true; cleaner.add(bucket);
+    // Third-person tools, held at the side
+    mopMesh = new THREE.Group();
+    var mh = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 1.25, 10), new THREE.MeshLambertMaterial({color:0x8b5a2b})); mh.position.y = 0.6; mopMesh.add(mh);
+    var mhead = new THREE.Mesh(new THREE.CylinderGeometry(0.26, 0.26, 0.14, 16), new THREE.MeshLambertMaterial({color:0xf5d90a})); mhead.position.y = -0.05; mopMesh.add(mhead);
+    mopMesh.position.set(0.48, 1.05, 0.32); mopMesh.visible = false; cleaner.add(mopMesh);
+    squeegeeMesh = new THREE.Group();
+    var sh = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 0.85, 10), new THREE.MeshLambertMaterial({color:0x334155})); sh.position.y = 0.4; squeegeeMesh.add(sh);
+    var sblade = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.09, 16), new THREE.MeshLambertMaterial({color:0x12202e})); sblade.rotation.z = Math.PI / 2; sblade.position.y = 0.88; squeegeeMesh.add(sblade);
+    squeegeeMesh.position.set(0.48, 1.05, 0.32); squeegeeMesh.visible = false; cleaner.add(squeegeeMesh);
+    scene.add(cleaner);
+
+    // First-person tools: forearm + hand + tool, bottom-right of the view, camera-attached.
+    fpGroup = new THREE.Group();
+    var fpArm = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.065, 0.55, 12), blueMat); fpArm.rotation.x = 1.1; fpArm.position.set(0.28, -0.32, -0.55); fpGroup.add(fpArm);
+    var fpHand = new THREE.Mesh(new THREE.SphereGeometry(0.07, 16, 12), skinMat); fpHand.position.set(0.28, -0.24, -0.82); fpGroup.add(fpHand);
+    fpMop = new THREE.Group();
+    var fmh = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.02, 0.9, 10), new THREE.MeshLambertMaterial({color:0x8b5a2b})); fmh.rotation.x = 0.5; fpMop.add(fmh);
+    var fmhead = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, 0.1, 16), new THREE.MeshLambertMaterial({color:0xf5d90a})); fmhead.position.set(0, -0.38, -0.2); fpMop.add(fmhead);
+    fpMop.position.set(0.28, -0.28, -0.85); fpMop.visible = false; fpGroup.add(fpMop);
+    fpSqueegee = new THREE.Group();
+    var fsh = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.02, 0.6, 10), new THREE.MeshLambertMaterial({color:0x334155})); fsh.rotation.x = 0.5; fpSqueegee.add(fsh);
+    var fsblade = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.24, 0.07, 16), new THREE.MeshLambertMaterial({color:0x12202e})); fsblade.rotation.z = Math.PI / 2; fsblade.position.set(0, 0.28, -0.15); fpSqueegee.add(fsblade);
+    fpSqueegee.position.set(0.28, -0.28, -0.85); fpSqueegee.visible = false; fpGroup.add(fpSqueegee);
+    fpGroup.visible = false;
+    camera.add(fpGroup); scene.add(camera);
+
+    // Windows: white frame + sill + realistic glass + divider bars
+    windows.forEach(function(w, idx){
+      var frame = new THREE.Mesh(new THREE.BoxGeometry(2.7, 3.3, 0.18), new THREE.MeshLambertMaterial({color:0xffffff}));
+      frame.position.set(w.x, 2.3, 0.55); frame.castShadow = true; scene.add(frame);
+      var sill = new THREE.Mesh(new THREE.BoxGeometry(2.9, 0.18, 0.4), new THREE.MeshLambertMaterial({color:0xffffff}));
+      sill.position.set(w.x, 0.62, 0.62); scene.add(sill);
+      var t = makeWindowTexture(idx + 1);
+      var tex = new THREE.CanvasTexture(t.canvas); tex.anisotropy = 4; t.texture = tex;
+      windowTextures.push(t);
+      var glass = new THREE.Mesh(new THREE.PlaneGeometry(2.3, 2.9), new THREE.MeshBasicMaterial({map:tex}));
+      glass.position.set(w.x, 2.3, 0.66); glass.userData.windowIndex = idx; scene.add(glass);
+      windowMeshes.push(glass);
+      var barV = new THREE.Mesh(new THREE.BoxGeometry(0.08, 2.9, 0.04), new THREE.MeshLambertMaterial({color:0xffffff}));
+      barV.position.set(w.x, 2.3, 0.68); scene.add(barV);
+      var barH = new THREE.Mesh(new THREE.BoxGeometry(2.3, 0.08, 0.04), new THREE.MeshLambertMaterial({color:0xffffff}));
+      barH.position.set(w.x, 2.3, 0.68); scene.add(barH);
+      drawWindowTexture(t, w);
+    });
+    windowsDirty = false;
+
+    // Look + tap on the 3D canvas. Pointer events cover mouse AND touch.
+    // Pointer lock is requested ONLY for a mouse click, never on touch.
+    var canvasEl = renderer.domElement;
+    var downPos = null, downTime = 0;
+    canvasEl.addEventListener('pointerdown', function(e){
+      downPos = {x:e.clientX, y:e.clientY}; downTime = Date.now();
+      if(e.pointerType === 'mouse'){
+        try{ canvasEl.requestPointerLock(); }catch(err){}
+      } else {
+        lookDrag.active = true; lookDrag.id = e.pointerId; lookDrag.lastX = e.clientX; lookDrag.lastY = e.clientY;
+      }
+    });
+    document.addEventListener('pointermove', function(e){
+      if(document.pointerLockElement === canvasEl){
+        player.yaw -= e.movementX * 0.0028;
+        player.pitch = Math.max(-0.7, Math.min(0.7, player.pitch - e.movementY * 0.0028));
+      } else if(lookDrag.active && e.pointerId === lookDrag.id){
+        lookDelta(e.clientX - lookDrag.lastX, e.clientY - lookDrag.lastY);
+        lookDrag.lastX = e.clientX; lookDrag.lastY = e.clientY;
+      }
+    });
+    document.addEventListener('pointerup', function(e){
+      if(lookDrag.active && e.pointerId === lookDrag.id) lookDrag.active = false;
+      // Tap (not drag) on a window in 3D: walk up to it.
+      if(downPos && raycaster && camera && Math.abs(e.clientX - downPos.x) < 10 && Math.abs(e.clientY - downPos.y) < 10 && Date.now() - downTime < 500){
+        var rect = canvasEl.getBoundingClientRect();
+        if(e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom){
+          var nx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+          var ny = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+          raycaster.setFromCamera({x:nx, y:ny}, camera);
+          var hits = raycaster.intersectObjects(windowMeshes, false);
+          if(hits.length > 0 && typeof hits[0].object.userData.windowIndex === 'number'){
+            selectWindow(hits[0].object.userData.windowIndex, true);
+          }
+        }
+      }
+      downPos = null;
+    });
+    animate();
+    return true;
+  }
+  var lastTime = performance.now();
+  function animate(){
+    requestAnimationFrame(animate);
+    var now = performance.now(); var dt = Math.min(0.05, (now - lastTime) / 1000); lastTime = now;
+    var speed = 4.8;
+    var forward = (keys['w'] || keys['arrowup']) ? 1 : 0;
+    var back = (keys['s'] || keys['arrowdown']) ? 1 : 0;
+    var strafeL = (keys['a']) ? 1 : 0;
+    var strafeR = (keys['d']) ? 1 : 0;
+    if(keys['arrowleft']) player.yaw += 1.9 * dt;
+    if(keys['arrowright']) player.yaw -= 1.9 * dt;
+    var fwd = forward - back - joy.y;
+    var str = strafeR - strafeL + joy.x;
+    var fx = Math.sin(player.yaw), fz = Math.cos(player.yaw);
+    var moveX = -fx * fwd + fz * str;
+    var moveZ = -fz * fwd - fx * str;
+    if(fwd !== 0 || str !== 0){
+      var len = Math.sqrt(moveX * moveX + moveZ * moveZ) || 1;
+      player.x += (moveX / len) * speed * dt;
+      player.z += (moveZ / len) * speed * dt;
+      player.x = Math.max(-15, Math.min(15, player.x));
+      player.z = Math.max(3, Math.min(12.5, player.z));
+    }
+    if(cleaner){
+      cleaner.position.set(player.x, 0, player.z);
+      cleaner.rotation.y = player.yaw;
+    }
+    findTarget(); updateHUD(); drawWindows3D();
+    if(camera){
+      if(cameraMode === 'third'){
+        camera.position.set(player.x + Math.sin(player.yaw) * 4.5, 3.2, player.z + Math.cos(player.yaw) * 4.5);
+        camera.lookAt(player.x, 1.5, player.z);
+      } else {
+        camera.position.set(player.x, 1.68, player.z);
+        camera.rotation.order = 'YXZ';
+        camera.rotation.y = player.yaw;
+        camera.rotation.x = player.pitch;
+      }
+    }
+    if(renderer && scene) renderer.render(scene, camera);
+  }
+  buildWinRow();
+  updateHUD();
+  window.addEventListener('resize', function(){ if(renderer && camera){ renderer.setSize(container.clientWidth, 560); camera.aspect = container.clientWidth / 560; camera.updateProjectionMatrix(); } });
+  init3D();
+})();
+</script>
+</body>
+</html>
